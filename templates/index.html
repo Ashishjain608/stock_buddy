@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+<h1>Search for a stock price</h1>
+
+<form action="/search" method="post">
+    <input autocomplete="off" autofocus name="name" placeholder="Name" type="text" />
+    <input type="submit" value="Get Current Price" />
+</form>
+
+{% endblock %}
