@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    here is the price: {{name}}
+    <ul>
+        <li>Here is the name: {{data["name"]}}</li>
+        <li>Here is the price: {{data["price"]}}</li>
+        <li>Here is the symbol: {{data["symbol"]}}</li>
+    </ul>
+
 {% endblock %}

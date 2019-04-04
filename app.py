@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from helper_functions import lookup
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ def home():
 @app.route("/search", methods=["POST"])
 def register():
     name = request.form.get("name")
-    if not name:
-        return render_template("failure.html")
-    return render_template("success.html", name=name)
+    data = lookup(name)
+
+    return render_template("success.html", data=data)
 
