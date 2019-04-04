@@ -6,7 +6,7 @@ Currently Under development
   - [ ] Login 
   - [ ] Logout
   - [ ] Dashboard
-    - [ ] View Stocks (Current Price)
+    - [x] View Stocks (Current Price)
     - [ ] View Stocks History (Last 5 year data)
     - [ ] Visualize different stock exchanges
     - [ ] predict / visualize particular stock's inclination in future
