@@ -6,12 +6,20 @@
 <div id="chartContainer"></div>
 
 <script src="/static/js/generateChart.js"></script>
-<!-- <script src="/static/js/predict.js"></script> -->   <!-- uncomment to run the prediction code -->
+<script src="/static/js/predict.js"></script>   <!-- uncomment to run the prediction code -->
 <script type="text/javascript">
 
-    // Generate Chart
-    // generateChart();
-    // extrapolation();
+    // generate datapoints
+    let dataset_length = 80;
+    var dps = [];
+    let i = 0;
+	for(i = 0; i < dataset_length; i++) {
+		dps.push({x: i,y: Math.random()*100});
+	}
+    //pass it to obtain the predictions
+    let pred = predictions(dps, dataset_length);
+    //pass dps and pred to chart generation 
+    generateChart(dps, pred);
 
 </script>
 
