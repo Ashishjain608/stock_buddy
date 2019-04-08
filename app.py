@@ -13,3 +13,7 @@ def register():
     data = lookup(name)
     
     return render_template("success.html", data=data)
+
+@app.route("/visualize")
+def visualize():
+    return render_template("visualize.html")

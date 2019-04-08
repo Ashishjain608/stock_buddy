@@ -46,3 +46,28 @@ These are the resources we call can consider. Please keep it updated with any go
 5. [chart.js](https://www.chartjs.org/)
 6. FusionCharts.js
  
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Documentation
+
+**Generation of Chart**
+```<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>```
+The basic structure of object being:
+
+```
+var chart = new CanvasJS.Chart("div_element_id",{
+	title :{
+		text: "Stock Prediction"
+	},
+	axisX: {						
+		title: "Attemp_#"
+	},
+	axisY: {						
+		title: "score"
+	},
+	data: [{
+		type: "line",
+		dataPoints : dps
+	}]
+});
+```
