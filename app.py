@@ -11,6 +11,5 @@ def home():
 def register():
     name = request.form.get("name")
     data = lookup(name)
-
+    
     return render_template("success.html", data=data)
-
