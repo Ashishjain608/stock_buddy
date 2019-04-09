@@ -38,5 +38,6 @@ dps = [{
 
 The current framework looks something like this.
     
+<img src="https://github.com/mehtaanuj95/stock_buddy/blob/master/static/images/architecture.JPG" alt="architecture" width="500" height="350"/>
 
         
