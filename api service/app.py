@@ -28,4 +28,4 @@ def fetch_stock_details():
 
     # return None
     
-    return render_template("success.html")
+    return render_template("success.html", data=data)
