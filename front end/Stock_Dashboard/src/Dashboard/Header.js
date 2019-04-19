@@ -88,10 +88,15 @@ const styles = theme => ({
 });
 
 class HeaderBar extends React.Component {
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null,
-  };
+
+  constructor (props) {
+    super(props);
+    this.state = {
+        anchorEl: null,
+        mobileMoreAnchorEl: null,
+      };
+  }
+ 
 
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });

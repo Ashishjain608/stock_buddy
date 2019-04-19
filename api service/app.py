@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from helper_functions import fetch_stock
+from helper_functions import fetch_stock, get_top4_stocks
 
 
 app = Flask(__name__)
@@ -26,6 +26,10 @@ def fetch_stock_details():
     # jsonify(data)
     # print(data)
 
-    # return None
-    
+    # return None    
     return render_template("success.html", data=data)
+
+@app.route("/v1/fetchTop4Stock", methods=["POST"])
+def fetchTop4Stock():
+    data = get_top4_stocks()  
+    return data

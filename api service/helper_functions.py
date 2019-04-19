@@ -30,10 +30,28 @@ quandl.ApiConfig.api_key = 'VbsmWFysHcxq6F1vZNPX'
 
 def fetch_stock(stock_Id):
     try:
-        data = quandl.get("NSE/" + stock_Id)
+        apiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=NSE:"
+        data = requests.get(apiUrl + stock_Id + "&apikey=569J8U1Q8UH3V5GG")
+        data = data.json()
         print(data)
         return {
             "data": data
-        }   
+        }  
     except (KeyError, TypeError, ValueError):
         return None
+
+def get_top4_stocks():
+    try:
+        top4StockCodes = ["RVNL", "POLYCAB", "INFY", "TCS"]
+        allData = []
+        apiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=NSE:"
+        for item in top4StockCodes:
+            data = requests.get(apiUrl + top4StockCodes[item] + "&apikey=569J8U1Q8UH3V5GG")
+            print(data)
+            allData.append(data.data['Global Quote'])
+        print(allData)
+        return {
+            allData
+        }
+    except (KeyError, TypeError, ValueError):
+        return None       
