@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from helper_functions import fetch_stock, get_top4_stocks
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+CORS(app)
 
 @app.route("/")
 def home():
@@ -29,7 +31,11 @@ def fetch_stock_details():
     # return None    
     return render_template("success.html", data=data)
 
-@app.route("/v1/fetchTop4Stock", methods=["POST"])
+@app.route("/v1/fetchTop4Stock")
 def fetchTop4Stock():
     data = get_top4_stocks()  
+    print(data)
     return data
+
+
+app.run(host='127.0.0.1', port=8085)

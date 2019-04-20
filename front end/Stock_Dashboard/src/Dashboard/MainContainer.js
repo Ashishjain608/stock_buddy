@@ -4,34 +4,46 @@ import Header from './Header';
 import StockCards from './StockCards';
 
 class MainContainer extends React.Component {
-    
-    constructor (props) {
+
+    constructor(props) {
         super(props)
-        this.state = {text: 'hello'}
+        this.state = { 
+            text: 'hello',
+            top4Stocks: []
+         }
     }
 
-    componentDidMount () {
-        fetch('https://randomuser.me/api/').then(({ results }) => 
-            
-            this.setState({ person: results })
-        );
+    componentDidMount = async () => {
+        try {
+            const response = await fetch('http://localhost:8085/v1/fetchTop4Stock');
+            const top4Stocks = await response.json();
+            if (top4Stocks) {
+                this.setState({
+                    top4Stocks
+                })
+            }
+        } catch (err) {
+            console.log('error while fetching top 4 stocks', err);
+        }
+
     }
 
-    render () {
-        let cards = ["Nifty", "Sensex", "Infosys", "Polycab"]
+
+    render() {
+        let cards = this.state.top4Stocks
         return (
             <Grid container >
-                <Header/>
+                <Header />
                 <Grid container justify="center" alignItems="center" spacing={12}>
                     {
-                        cards.map((cardItem) => 
+                        cards && cards.map((cardItem) =>
                             <Grid item xs={3}>
-                                <StockCards title = {cardItem} text = "yolo"/>
+                                <StockCards title={cardItem.stockSymbol} itemObj={cardItem} />
                             </Grid>)
                     }
-                </Grid>                
+                </Grid>
             </Grid>
-        ) 
+        )
     }
 }
 
