@@ -1,8 +1,9 @@
-import requests
-import urllib.parse
-from flask import redirect, render_template, request, session, jsonify
 import quandl
-import pandas as pd
+import requests
+from flask import jsonify
+import csv
+import json
+import os.path
 quandl.ApiConfig.api_key = 'VbsmWFysHcxq6F1vZNPX'
 
 # def lookup(symbol):
@@ -27,6 +28,22 @@ quandl.ApiConfig.api_key = 'VbsmWFysHcxq6F1vZNPX'
     #     }
     # except (KeyError, TypeError, ValueError):
     #     return None
+
+def fetch_historic_data():
+    try:
+        data = []
+        my_path = os.path.abspath(os.path.dirname(__file__))
+        path = os.path.join(my_path, "static/data/INFY_2016to2019.csv")
+        with open(path) as f:
+            for row in csv.DictReader(f):
+                data.append(row)
+        json_data = json.dumps(data)
+        print(json_data)
+        return json_data
+
+    except Exception as e:
+        raise e
+
 
 def fetch_stock(stock_Id):
     try:

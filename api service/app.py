@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from helper_functions import fetch_stock, get_top4_stocks
+from helper_functions import fetch_stock, get_top4_stocks, fetch_historic_data
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -19,7 +19,8 @@ def home():
 
 @app.route("/visualize")
 def visualize():
-    return render_template("visualize.html")
+    return fetch_historic_data()
+    # return render_template("visualize.html")
 
 @app.route("/v1/fetchStockDetails", methods=["POST"])
 def fetch_stock_details():

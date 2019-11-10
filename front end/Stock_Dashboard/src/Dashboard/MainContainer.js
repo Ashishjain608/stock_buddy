@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from "@material-ui/core";
 import Header from './Header';
 import StockCards from './StockCards';
+import StockCharts from './StockCharts';
 
 class MainContainer extends React.Component {
 
@@ -42,6 +43,7 @@ class MainContainer extends React.Component {
                             </Grid>)
                     }
                 </Grid>
+                <StockCharts />
             </Grid>
         )
     }
